@@ -5,11 +5,13 @@
         const gameOverText = document.getElementById('gameOver');
         const restartBtn = document.querySelector('.restartBtn');
 
+
+        
         // 游戏配置
         const config = {
-            gridSize: 20,
-            initialSpeed: 200,
-            speedIncrease: 1,
+            gridSize: 30,
+            initialSpeed: 250,
+            speedIncrease: 0,
             colors: {
                 snakeHead: '#FF5555',
                 snakeBody: '#4CAF50',
@@ -146,6 +148,9 @@
             });
         }
 
+
+        
+
         function createFoodEffect() {
             // 创建粒子动画
             const particles = 15;
@@ -205,6 +210,9 @@
             if (valid[newDir].includes(direction)) nextDirection = newDir;
         }
 
+
+
+
         // 键盘控制
         document.addEventListener('keydown', e => {
             const dirMap = {
@@ -248,6 +256,7 @@
         restartBtn.addEventListener('click', initGame);
         gameOverText.addEventListener('click', initGame);
 
+        
         // 初始化
         window.addEventListener('resize', initGame);
         initGame();

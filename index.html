@@ -56,42 +56,90 @@
             text-align: center;
         }
 
+    
+    /* 删除原有.control-panel样式，替换为以下代码 */
+    .control-panel {
+        position: fixed;
+        bottom: 5vh;
+        display: grid;
+        grid-template: 
+            ".... up ...." 1fr
+            "left ... right" 1fr
+            ".... down ...." 1fr 
+            / 1fr 1fr 1fr;
+        gap: 1.5vmin;
+        width: 35vmin;
+        max-width: 160px;
+        touch-action: none;
+        opacity: 0.9;
+        transition: opacity 0.3s;
+    }
+
+    .control-panel:hover {
+        opacity: 1;
+    }
+
+    .control-btn {
+        width: 10vmin;
+        height: 10vmin;
+        max-width: 50px;
+        max-height: 50px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5vmin;
+        color: rgba(255, 255, 255, 0.9);
+        user-select: none;
+        transition: 
+            transform 0.1s ease,
+            background 0.2s ease,
+            box-shadow 0.2s ease;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+            0 2px 8px rgba(0, 0, 0, 0.2),
+            inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    }
+
+    .control-btn:active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(0.88);
+        box-shadow: 
+            0 1px 4px rgba(0, 0, 0, 0.2),
+            inset 0 2px 4px rgba(255, 255, 255, 0.15);
+    }
+
+    /* 方向键特殊样式 */
+    .control-btn[data-direction="up"] {
+        grid-area: up;
+        border-radius: 15% 15% 30% 30%;
+    }
+    .control-btn[data-direction="down"] {
+        grid-area: down;
+        border-radius: 30% 30% 15% 15%;
+    }
+    .control-btn[data-direction="left"] {
+        grid-area: left;
+        border-radius: 15% 30% 30% 15%;
+    }
+    .control-btn[data-direction="right"] {
+        grid-area: right;
+        border-radius: 30% 15% 15% 30%;
+    }
+
+    @media (max-width: 480px) {
         .control-panel {
-            position: fixed;
-            bottom: 4vh;
-            display: grid;
-            grid-template: 
-                ". up ." 1fr
-                "left . right" 1fr
-                ". down ." 1fr / 1fr 1fr 1fr;
-            gap: 2vw;
-            width: 60vw;
-            max-width: 300px;
-            touch-action: none;
+            bottom: 3vh;
+            width: 30vmin;
+            gap: 1vmin;
         }
-
         .control-btn {
-            width: 12vw;
-            height: 12vw;
-            max-width: 80px;
-            max-height: 80px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6vw;
-            color: rgba(255, 255, 255, 0.8);
-            user-select: none;
-            transition: all 0.1s;
-            backdrop-filter: blur(5px);
+            font-size: 6vmin;
+            border-radius: 12%;
         }
-
-        .control-btn:active {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(0.85);
-        }
-
+    }
         .restartBtn {
             padding: 12px 24px;
             font-size: 18px;
