@@ -8,7 +8,7 @@
         // 游戏配置
         const config = {
             gridSize: 20,
-            initialSpeed: 150,
+            initialSpeed: 200,
             speedIncrease: 1,
             colors: {
                 snakeHead: '#FF5555',
